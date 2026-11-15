@@ -16,7 +16,7 @@ export default function ErrorPage({ error, reset }: { error: Error & { digest?: 
       {error.digest && <p className="text-xs text-muted-foreground">Error reference: {error.digest}</p>}
       <div className="flex gap-2">
         <Button onClick={reset}>Try again</Button>
-        <Button variant="outline" render={<Link href="/admin/demo" />}>
+        <Button variant="outline" nativeButton={false} render={<Link href="/admin/demo" />}>
           Demo tools
         </Button>
       </div>

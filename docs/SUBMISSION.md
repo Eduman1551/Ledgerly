@@ -24,6 +24,11 @@ The updated deck is uploaded separately in the form. It reflects the stack and p
 
 Everything listed here works on the live link without an AI key (the local fallback). With a key, AI also extracts claims and reviews tone on Public and Internal drafts.
 
+**Home page and role dashboards**
+- Home page that is also the role picker (no login): pitch, workflow strip, three role cards, trust line.
+- Creator dashboard (my drafts, what needs fixing, drafts checked, issues fixed), reviewer dashboard (review queue, recent approvals, override count) and admin dashboard (KPIs, shortcuts, top Governance Brain insights).
+- Role-aware navigation and friendly route guards with a one-click role switch.
+
 **Core workflow (content in → checked → issues with rule and fix → human approval)**
 - Drafts inbox with status, channel, tier, language and open-issue count; reviewers see their review queue first.
 - New draft form: title, channel, privacy tier (with an explanation of what each tier means for AI), text typed or loaded from .txt / .md / .docx, optional image with alt text.

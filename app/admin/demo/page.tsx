@@ -2,6 +2,7 @@
 import { ExternalLink } from "lucide-react";
 import { DemoTools } from "@/components/demo-tools";
 import { PageHeader } from "@/components/form-fields";
+import { RoleGate } from "@/components/role-gate";
 
 const REPO = "https://github.com/Eduman1551/Ledgerly";
 
@@ -14,7 +15,7 @@ const WALKTHROUGH = [
   "Fact Ledger → New version on the Masala Chai price. Drafts that still use the old price are flagged Outdated on re-check.",
 ];
 
-export default function DemoPage() {
+function DemoPageContent() {
   return (
     <div className="flex flex-col gap-6">
       <PageHeader title="Demo tools" description="This is a demo with a fictional brand, Kesar & Co. There is no sign-in: use the persona switcher in the top bar to change role." />
@@ -39,5 +40,13 @@ export default function DemoPage() {
         </a>
       </section>
     </div>
+  );
+}
+
+export default function DemoPage() {
+  return (
+    <RoleGate path="/admin/demo">
+      <DemoPageContent />
+    </RoleGate>
   );
 }

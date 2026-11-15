@@ -6,6 +6,12 @@
       "runtimeExecutable": "pnpm",
       "runtimeArgs": ["dev"],
       "port": 3000
+    },
+    {
+      "name": "ledgerly-dev-local",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["-e", "require('child_process').spawn('pnpm dev --port 3001', { shell: true, stdio: 'inherit', env: { ...process.env, DATABASE_URL: '', GOOGLE_GENERATIVE_AI_API_KEY: '' } }).on('exit', (c) => process.exit(c ?? 0))"],
+      "port": 3001
     }
   ]
 }

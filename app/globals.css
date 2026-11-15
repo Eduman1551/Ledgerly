@@ -165,3 +165,21 @@
 .hl-other { text-decoration-color: #2563eb; background: #eff6ff; }
 .hl-done { text-decoration-color: #9ca3af; background: transparent; text-decoration-style: dotted; }
 .hl-active { outline: 2px solid #0f766e; outline-offset: 1px; }
+
+/* Subtle grid background used on the home hero and dashboard headers. */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgb(15 118 110 / 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(15 118 110 / 0.07) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

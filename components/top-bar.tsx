@@ -6,17 +6,9 @@ import { usePathname } from "next/navigation";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import type { Role } from "@/lib/db/schema";
 import { cn } from "@/lib/utils";
-import { HOME_BY_ROLE, useApp } from "./app-context";
+import { HOME_BY_ROLE, NAV, ROLE_LABEL } from "@/lib/roles";
+import { useApp } from "./app-context";
 
-const NAV: { href: string; label: string; roles: Role[] }[] = [
-  { href: "/drafts", label: "Drafts", roles: ["creator", "reviewer", "admin"] },
-  { href: "/ledger", label: "Fact Ledger", roles: ["creator", "reviewer", "admin"] },
-  { href: "/guidelines", label: "Guidelines", roles: ["creator", "reviewer", "admin"] },
-  { href: "/insights", label: "Insights", roles: ["reviewer", "admin"] },
-  { href: "/admin/demo", label: "Demo tools", roles: ["creator", "reviewer", "admin"] },
-];
-
-const ROLE_LABEL: Record<Role, string> = { creator: "Creator", reviewer: "Reviewer", admin: "Admin / Brand owner" };
 const ROLE_COLOR: Record<Role, string> = { creator: "bg-teal-700", reviewer: "bg-indigo-600", admin: "bg-amber-700" };
 
 export const initials = (name: string) =>
@@ -109,9 +101,11 @@ export function TopBar() {
         </Link>
         <nav className="flex flex-1 items-center gap-1 overflow-x-auto" aria-label="Main">
           {NAV.filter((n) => n.roles.includes(user.role)).map((n) => {
-            const active = pathname === n.href || pathname.startsWith(`${n.href}/`);
+            // "/admin" must not light up on "/admin/demo", so dashboards match exactly.
+            const isDashboard = n.label === "Dashboard";
+            const active = pathname === n.href || (!isDashboard && pathname.startsWith(`${n.href}/`));
             return (
-              <Link key={n.href} href={n.href} className={cn("rounded-md px-3 py-1.5 text-sm font-medium whitespace-nowrap transition-colors", active ? "bg-teal-50 text-teal-800" : "text-muted-foreground hover:bg-muted hover:text-foreground")}>
+              <Link key={n.label + n.href} href={n.href} className={cn("rounded-md px-3 py-1.5 text-sm font-medium whitespace-nowrap transition-colors", active ? "bg-teal-50 text-teal-800" : "text-muted-foreground hover:bg-muted hover:text-foreground")}>
                 {n.label}
               </Link>
             );

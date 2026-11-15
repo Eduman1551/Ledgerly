@@ -5,6 +5,7 @@ import { OverrideChart } from "@/components/insights/override-chart";
 import { SuggestionCard } from "@/components/insights/suggestion-card";
 import { getDb } from "@/lib/db";
 import { getInsights } from "@/lib/services/insights";
+import { RoleGate } from "@/components/role-gate";
 
 export const dynamic = "force-dynamic";
 
@@ -18,7 +19,7 @@ function Kpi({ label, value, sub }: { label: string; value: string | number; sub
   );
 }
 
-export default async function InsightsPage() {
+async function InsightsPageContent() {
   const insights = await getInsights(await getDb());
   const { kpis } = insights;
   const pending = insights.suggestions.filter((s) => s.status === "pending");
@@ -94,5 +95,13 @@ export default async function InsightsPage() {
         </section>
       )}
     </div>
+  );
+}
+
+export default function InsightsPage() {
+  return (
+    <RoleGate path="/insights">
+      <InsightsPageContent />
+    </RoleGate>
   );
 }

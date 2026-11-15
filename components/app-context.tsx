@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from "react";
 import type { Role } from "@/lib/db/schema";
 
+export { HOME_BY_ROLE } from "@/lib/roles";
+
 export type Persona = { id: string; name: string; role: Role };
 
 type AppState = {
@@ -22,8 +24,6 @@ const AppContext = createContext<AppState | null>(null);
 const setCookie = (name: string, value: string) => {
   document.cookie = `${name}=${encodeURIComponent(value)}; path=/; max-age=${60 * 60 * 24 * 30}; samesite=lax`;
 };
-
-export const HOME_BY_ROLE: Record<Role, string> = { creator: "/drafts", reviewer: "/drafts", admin: "/insights" };
 
 export function AppProvider(props: { user: Persona; personas: Persona[]; aiConfigured: boolean; aiModel: string; aiOff: boolean; children: ReactNode }) {
   const router = useRouter();

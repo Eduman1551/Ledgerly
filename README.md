@@ -14,12 +14,12 @@ Built by team **CookedCoders** (IIIT Kota) for **CodeNova India 2026, Round 2 ("
 
 ## 3-minute judge walkthrough
 
-1. Open the link and click **Start as Riya (Creator)**.
+1. Open the link. The home page is also the role picker: click **Enter as Riya** (Creator). You land on the creator dashboard.
 2. Open **Diwali launch post**. You will see 8 highlighted issues, each with its source, for example `₹499 → ₹549 · Price sheet v3`. The trust strip at the bottom of the panel says what was sent to AI (or "Checked locally · 0 data sent to AI").
 3. Click **Accept** on the price fix. Use **Edit** on "India's #1" (or Accept: remove). Fix the other high-severity issues (or use **Accept all fixes**), click **Re-check**, then **Send to reviewer**.
-4. Switch persona (top right) to **Arjun (Reviewer)**. Open the draft in the review queue, **Override** a tone flag with a reason, then **Approve**. The page shows "Approved, ready to publish" with **Copy final text**. Ledgerly never publishes.
+4. Switch persona (top right) to **Arjun (Reviewer)**; you land on the reviewer dashboard. Open the draft in the review queue, **Override** a tone flag with a reason, then **Approve**. The page shows "Approved, ready to publish" with **Copy final text**. Ledgerly never publishes.
 5. Open **Winter Blend teaser brief** (Confidential). The trust strip says **"Checked locally · 0 data sent to AI"**.
-6. Switch to **Meera (Admin)** → **Insights**. "Tone: avoid slang" shows as a vague rule (overridden 56% of the time). Click **Accept rewrite**, then open **Guidelines** to see version 2.
+6. Switch to **Meera (Admin)**. The admin dashboard shows the KPIs and the top Governance Brain insight: "Tone: avoid slang" is a vague rule (overridden by reviewers most of the time). Click **Accept rewrite**, then open **Guidelines** to see version 2.
 7. **Fact Ledger** → **New version** on "Masala Chai 250g price" (for example ₹599). Re-check a draft that says ₹549 and it is now flagged **Outdated**.
 
 Judges share one database. **Demo tools → Reset demo data** restores the starting state at any time.
@@ -33,6 +33,8 @@ Judges share one database. **Demo tools → Reset demo data** restores the start
 | **Claim Ledger (accuracy)** | A versioned Fact Ledger (value, source, owner, effective date, full history). Every claim in a draft is labelled **Supported / Unsupported / Outdated / Conflicting** with the exact fact version it was checked against. Rule: no source, no claim. |
 | **Governance Brain (learning)** | Every accept, edit, override and approval is logged. Rules with ≥ 3 decisions and an override rate ≥ 40% are flagged as vague, with the override reasons as evidence and a proposed rewrite. Accepting the rewrite creates a new rule version that later checks use. |
 | **Private by Design (trust)** | Three privacy tiers. Confidential drafts never reach AI. Internal drafts are reversibly redacted (names, emails, phones, internal codes, confidential fact values) before AI sees them. Confidential fact values are hidden from AI on every tier. A trust strip on every result says what was sent. |
+
+Each role has its own dashboard (`/creator`, `/reviewer`, `/admin`), the top bar shows only that role’s pages, and a page meant for another role shows a friendly “switch role” card instead of an error.
 
 Also: Hinglish/Hindi/English language detection, Hinglish-aware tone checks, banned and required terms, brand spelling, emoji and ALL-CAPS limits, language-per-channel, sentence length, image alt text and brand-palette colour checks.
 
@@ -104,6 +106,10 @@ flowchart LR
 **Libraries**: Next.js 16, React 19, TypeScript, Tailwind CSS v4, shadcn/ui (base-nova style, Base UI primitives), lucide-react, Recharts, sonner, Drizzle ORM and drizzle-kit, `@neondatabase/serverless`, `@electric-sql/pglite` (local fallback DB), Zod 4, mammoth (.docx parsing), dotenv, tsx, Vitest, ESLint.
 
 **Templates**: `create-next-app` scaffold and shadcn/ui generated components (`components/ui/*`). No other templates.
+
+**Photos** (home page, free under the [Unsplash License](https://unsplash.com/license), stored as optimised WebP in `public/images/`):
+- Team meeting in a Bengaluru office by **Smartworks Coworking**: https://unsplash.com/photos/men-and-women-having-a-meeting-cW4lLTavU80
+- Lit diyas on a decorative tray by **Udayaditya Barua**: https://unsplash.com/photos/lit-oil-lamps-on-decorative-tray-xisPXJqwQkA
 
 **AI coding assistance**: parts of this codebase were written with the help of Claude Code (Anthropic), as shown in the commit trailers.
 
