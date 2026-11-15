@@ -54,12 +54,14 @@ export async function runCheck(input: CheckInput, ai?: AiAdapter | null): Promis
       charsSentToAi = redacted.text.length;
       redactionsCount = redacted.count;
       model = ai.model;
-    } catch {
+    } catch (error) {
       aiPath = "ai_failed_fallback"; // timeout, rate limit, bad output → local rules only
       model = ai.model;
-      // Be honest: the (redacted) text may already have left before the failure.
-      charsSentToAi = redacted.text.length;
-      redactionsCount = redacted.count;
+      // Be honest: unless the call was stopped before sending (our own rate
+      // limit), the redacted text may already have left before the failure.
+      const neverSent = (error as { notSent?: boolean } | null)?.notSent === true;
+      charsSentToAi = neverSent ? 0 : redacted.text.length;
+      redactionsCount = neverSent ? 0 : redacted.count;
     }
   }
 

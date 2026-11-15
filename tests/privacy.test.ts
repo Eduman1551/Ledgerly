@@ -42,7 +42,7 @@ describe("tier routing", () => {
   const fakeAi = (analyze: AiAdapter["analyze"]): AiAdapter => ({ model: "test-model", analyze });
 
   it("Confidential drafts never call AI", async () => {
-    const analyze = vi.fn(async () => ({ claims: [], tone: [] }));
+    const analyze = vi.fn<AiAdapter["analyze"]>(async () => ({ claims: [], tone: [] }));
     const result = await check(BRIEF, { tier: "confidential", channel: "document" }, fakeAi(analyze));
     expect(analyze).not.toHaveBeenCalled();
     expect(result.aiPath).toBe("local_only");
@@ -50,7 +50,7 @@ describe("tier routing", () => {
   });
 
   it("Internal drafts send only redacted text", async () => {
-    const analyze = vi.fn(async () => ({ claims: [], tone: [] }));
+    const analyze = vi.fn<AiAdapter["analyze"]>(async () => ({ claims: [], tone: [] }));
     const result = await check(BRIEF, { tier: "internal", channel: "document" }, fakeAi(analyze));
     const sent = analyze.mock.calls[0][0].text;
     expect(sent).not.toContain("Arjun");
@@ -61,7 +61,7 @@ describe("tier routing", () => {
   });
 
   it("Public drafts still hide confidential fact values", async () => {
-    const analyze = vi.fn(async () => ({ claims: [], tone: [] }));
+    const analyze = vi.fn<AiAdapter["analyze"]>(async () => ({ claims: [], tone: [] }));
     const result = await check("Masala Chai is ₹549. Psst, Winter Blend at ₹699 soon.", { tier: "public" }, fakeAi(analyze));
     expect(analyze.mock.calls[0][0].text).not.toContain("₹699");
     expect(result.aiPath).toBe("full_ai");
