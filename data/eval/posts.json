@@ -1,0 +1,192 @@
+{
+  "note": "20 hand-labelled posts for the fictional brand Kesar & Co. Labels were written by reading each post against the seeded Fact Ledger, NOT by copying engine output. Some posts are deliberately hard (number words, unusual phrasing) so the scores are honest.",
+  "posts": [
+    {
+      "id": "en-01",
+      "group": "english",
+      "channel": "instagram",
+      "tier": "public",
+      "text": "Our Masala Chai 250g is now ₹549. Free shipping on orders above ₹399!",
+      "expected": { "language": "english", "toneFlag": false, "claims": [{ "excerpt": "₹549", "status": "supported" }, { "excerpt": "₹399", "status": "supported" }] }
+    },
+    {
+      "id": "en-02",
+      "group": "english",
+      "channel": "ad",
+      "tier": "public",
+      "text": "Masala Chai 250g for just ₹499. Order today!",
+      "expected": { "language": "english", "toneFlag": false, "claims": [{ "excerpt": "₹499", "status": "outdated" }] }
+    },
+    {
+      "id": "en-03",
+      "group": "english",
+      "channel": "instagram",
+      "tier": "public",
+      "text": "India's #1 chai brand, loved by 2 lakh+ customers.",
+      "expected": { "language": "english", "toneFlag": false, "claims": [{ "excerpt": "India's #1", "status": "unsupported" }, { "excerpt": "2 lakh+", "status": "supported" }] }
+    },
+    {
+      "id": "en-04",
+      "group": "english",
+      "channel": "ad",
+      "tier": "public",
+      "text": "Delivery in 2 days, guaranteed. Returns within 7 days.",
+      "expected": { "language": "english", "toneFlag": false, "claims": [{ "excerpt": "2 days", "status": "conflicting" }, { "excerpt": "7 days", "status": "supported" }] }
+    },
+    {
+      "id": "en-05",
+      "group": "english",
+      "channel": "instagram",
+      "tier": "public",
+      "text": "100% organic chai, certified by nature.",
+      "expected": { "language": "english", "toneFlag": false, "claims": [{ "excerpt": "100% organic", "status": "conflicting" }, { "excerpt": "certified", "status": "conflicting" }] }
+    },
+    {
+      "id": "en-06",
+      "group": "english",
+      "channel": "instagram",
+      "tier": "public",
+      "text": "OMG this chai is LIT bro 🔥🔥🔥🔥🔥",
+      "expected": { "language": "english", "toneFlag": true, "claims": [] }
+    },
+    {
+      "id": "en-07",
+      "group": "english",
+      "channel": "ad",
+      "tier": "public",
+      "text": "Trusted by over 5 lakh customers across India.",
+      "expected": { "language": "english", "toneFlag": false, "claims": [{ "excerpt": "5 lakh", "status": "conflicting" }] }
+    },
+    {
+      "id": "en-08",
+      "group": "english",
+      "channel": "instagram",
+      "tier": "public",
+      "text": "Half price this weekend only! The best chai in the world.",
+      "expected": { "language": "english", "toneFlag": false, "claims": [{ "excerpt": "Half price", "status": "unsupported" }, { "excerpt": "best chai in the world", "status": "unsupported" }] }
+    },
+    {
+      "id": "hg-01",
+      "group": "hinglish",
+      "channel": "instagram",
+      "tier": "internal",
+      "text": "Is Diwali, India's #1 masala chai sirf ₹499 mein! 100% organic aur guaranteed delivery in 2 din. Order karo bro 🔥🔥🔥🔥 KesarCo ke saath!",
+      "expected": {
+        "language": "hinglish",
+        "toneFlag": true,
+        "claims": [
+          { "excerpt": "India's #1", "status": "unsupported" },
+          { "excerpt": "₹499", "status": "outdated" },
+          { "excerpt": "100% organic", "status": "conflicting" },
+          { "excerpt": "2 din", "status": "conflicting" }
+        ]
+      }
+    },
+    {
+      "id": "hg-02",
+      "group": "hinglish",
+      "channel": "instagram",
+      "tier": "public",
+      "text": "Chai lovers, suno! Masala chai ab sirf ₹549 mein, aur free shipping ₹399 ke upar.",
+      "expected": { "language": "hinglish", "toneFlag": false, "claims": [{ "excerpt": "₹549", "status": "supported" }, { "excerpt": "₹399", "status": "supported" }] }
+    },
+    {
+      "id": "hg-03",
+      "group": "hinglish",
+      "channel": "instagram",
+      "tier": "public",
+      "text": "Sirf do din mein delivery, pakka!",
+      "expected": { "language": "hinglish", "toneFlag": false, "claims": [{ "excerpt": "do din", "status": "conflicting" }] }
+    },
+    {
+      "id": "hg-04",
+      "group": "hinglish",
+      "channel": "instagram",
+      "tier": "public",
+      "text": "Humare 2 lakh+ customers ka pyaar hi hamari taakat hai yaar ❤️",
+      "expected": { "language": "hinglish", "toneFlag": true, "claims": [{ "excerpt": "2 lakh+", "status": "supported" }] }
+    },
+    {
+      "id": "hg-05",
+      "group": "hinglish",
+      "channel": "ad",
+      "tier": "internal",
+      "text": "Diwali sale mein 30% off, jaldi karo!",
+      "expected": { "language": "hinglish", "toneFlag": false, "claims": [{ "excerpt": "30%", "status": "conflicting" }] }
+    },
+    {
+      "id": "hg-06",
+      "group": "hinglish",
+      "channel": "instagram",
+      "tier": "public",
+      "text": "Desh ki sabse pasandida chai, ab 7 din ki return policy ke saath.",
+      "expected": { "language": "hinglish", "toneFlag": false, "claims": [{ "excerpt": "sabse pasandida", "status": "unsupported" }, { "excerpt": "7 din", "status": "supported" }] }
+    },
+    {
+      "id": "hi-01",
+      "group": "hindi",
+      "channel": "instagram",
+      "tier": "public",
+      "text": "हमारी मसाला चाय अब सिर्फ ₹549 में।",
+      "expected": { "language": "hindi", "toneFlag": false, "claims": [{ "excerpt": "₹549", "status": "supported" }] }
+    },
+    {
+      "id": "hi-02",
+      "group": "hindi",
+      "channel": "ad",
+      "tier": "public",
+      "text": "मसाला चाय सिर्फ ₹499 में, आज ही ऑर्डर करें!",
+      "expected": { "language": "hindi", "toneFlag": false, "claims": [{ "excerpt": "₹499", "status": "outdated" }] }
+    },
+    {
+      "id": "hi-03",
+      "group": "hindi",
+      "channel": "instagram",
+      "tier": "public",
+      "text": "डिलीवरी 2 दिन में, 100% ऑर्गेनिक चाय।",
+      "expected": { "language": "hindi", "toneFlag": false, "claims": [{ "excerpt": "2 दिन", "status": "conflicting" }, { "excerpt": "100% ऑर्गेनिक", "status": "conflicting" }] }
+    },
+    {
+      "id": "hi-04",
+      "group": "hindi",
+      "channel": "instagram",
+      "tier": "public",
+      "text": "भारत की नंबर 1 चाय, 2 लाख+ ग्राहकों का भरोसा।",
+      "expected": { "language": "hindi", "toneFlag": false, "claims": [{ "excerpt": "नंबर 1", "status": "unsupported" }, { "excerpt": "2 लाख+", "status": "supported" }] }
+    },
+    {
+      "id": "em-01",
+      "group": "email",
+      "channel": "email",
+      "tier": "public",
+      "text": "Namaste from Kesar & Co.! Our Masala Chai 250g is now ₹549, and you get free shipping on orders above ₹399. Orders are delivered in 5–7 business days. Not happy with your order? Return it within 7 days.",
+      "expected": {
+        "language": "english",
+        "toneFlag": false,
+        "claims": [
+          { "excerpt": "₹549", "status": "supported" },
+          { "excerpt": "₹399", "status": "supported" },
+          { "excerpt": "5–7 business days", "status": "outdated" },
+          { "excerpt": "7 days", "status": "supported" }
+        ]
+      }
+    },
+    {
+      "id": "em-02",
+      "group": "email",
+      "channel": "email",
+      "tier": "internal",
+      "text": "Dear customer, your order ships free above ₹399 and arrives in 3–5 business days. Our Diwali sale gives you 20% off until 5 Nov.",
+      "expected": {
+        "language": "english",
+        "toneFlag": false,
+        "claims": [
+          { "excerpt": "₹399", "status": "supported" },
+          { "excerpt": "3–5 business days", "status": "supported" },
+          { "excerpt": "20%", "status": "supported" },
+          { "excerpt": "5 Nov", "status": "supported" }
+        ]
+      }
+    }
+  ]
+}
