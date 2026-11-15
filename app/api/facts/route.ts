@@ -2,9 +2,13 @@
 import { route, parseBody, requireRole } from "@/lib/api";
 import { getDb } from "@/lib/db";
 import { newFactSchema } from "@/lib/schemas";
-import { createFact, listFacts } from "@/lib/services/ledger";
+import { getCurrentUser } from "@/lib/session";
+import { createFact, listFacts, maskConfidential } from "@/lib/services/ledger";
 
-export const GET = route(async () => ({ facts: await listFacts(await getDb()) }));
+export const GET = route(async () => {
+  const [user, facts] = await Promise.all([getCurrentUser(), listFacts(await getDb())]);
+  return { facts: user.role === "admin" ? facts : maskConfidential(facts) };
+});
 
 export const POST = route(async (request) => {
   const body = await parseBody(request, newFactSchema);

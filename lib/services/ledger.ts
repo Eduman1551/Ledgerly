@@ -82,3 +82,15 @@ export async function addFactVersion(db: Db, factId: string, input: NewFactVersi
   await db.update(facts).set({ currentVersionId: version.id }).where(eq(facts.id, factId));
   return version;
 }
+
+type ListedFact = Awaited<ReturnType<typeof listFacts>>[number];
+
+const HIDDEN = { value: "", displayValue: "Hidden (confidential)" };
+
+/** Hide confidential values from everyone except the brand owner. */
+export function maskConfidential(list: ListedFact[]): ListedFact[] {
+  return list.map((f) => {
+    if (f.tier !== "confidential") return f;
+    return { ...f, versions: f.versions.map((v) => ({ ...v, ...HIDDEN })), current: f.current && { ...f.current, ...HIDDEN } };
+  });
+}
