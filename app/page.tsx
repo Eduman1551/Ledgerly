@@ -1,69 +1,77 @@
-import Image from "next/image";
+// Landing page: the pitch, the 4-stage workflow, and three persona cards.
+import { BadgeCheck, Brain, ShieldCheck } from "lucide-react";
+import { PersonaCards } from "@/components/persona-cards";
 
-export default function Home() {
+const STAGES = [
+  { n: 1, title: "Setup", who: "Admin", steps: ["Upload brand docs", "Tag privacy tier", "Build the Fact Ledger"] },
+  { n: 2, title: "Check", who: "Ledgerly", steps: ["Creator submits", "Split into claims, route by tier", "Check every claim"] },
+  { n: 3, title: "Review", who: "Humans", steps: ["See why and fix", "Accept or edit", "Reviewer approves or overrides"] },
+  { n: 4, title: "Learn", who: "Governance Brain", steps: ["Log the decision", "Spot vague rules", "Rewrite becomes a new version"] },
+];
+
+const PILLARS = [
+  { icon: BadgeCheck, title: "Claim Ledger", text: "Every claim is labelled Supported, Unsupported, Outdated or Conflicting against a versioned Fact Ledger. No source, no claim." },
+  { icon: Brain, title: "Governance Brain", text: "Learns from every accept, edit and override. Finds vague rules and proposes clearer wording for the brand owner to accept." },
+  { icon: ShieldCheck, title: "Private by Design", text: "Confidential content is checked locally. AI only ever sees redacted text, and a trust strip tells you exactly what was sent." },
+];
+
+export default function LandingPage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="mx-auto flex max-w-5xl flex-col gap-10 py-6">
+      <section className="flex flex-col gap-4">
+        <span className="w-fit rounded-full border border-teal-200 bg-teal-50 px-3 py-1 text-xs font-medium text-teal-800">Brand governance for English, Hindi and Hinglish content</span>
+        <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-balance">Publish on-brand. Every claim checked against an approved source.</h1>
+        <p className="max-w-3xl text-lg text-muted-foreground">
+          Ledgerly checks drafts against your guidelines, facts, terminology and visual identity. Each issue shows the rule it breaks and a suggested fix. A human always makes the final call.
+        </p>
+      </section>
+
+      <section aria-labelledby="start" className="flex flex-col gap-3">
+        <div className="flex flex-wrap items-baseline justify-between gap-2">
+          <h2 id="start" className="text-lg font-semibold">
+            Pick a role to start the demo
+          </h2>
+          <p className="text-sm text-muted-foreground">Demo with a fictional brand, no sign-in needed.</p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+        <PersonaCards />
+      </section>
+
+      <section aria-labelledby="workflow" className="flex flex-col gap-3">
+        <h2 id="workflow" className="text-lg font-semibold">
+          How it works
+        </h2>
+        <ol className="grid gap-3 md:grid-cols-4">
+          {STAGES.map((s) => (
+            <li key={s.n} className="rounded-xl bg-muted p-4">
+              <div className="flex items-center gap-2">
+                <span className="flex size-6 items-center justify-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">{s.n}</span>
+                <span className="font-semibold">{s.title}</span>
+                <span className="ml-auto text-xs text-muted-foreground">{s.who}</span>
+              </div>
+              <ul className="mt-3 flex flex-col gap-1.5 text-sm text-muted-foreground">
+                {s.steps.map((step) => (
+                  <li key={step} className="flex gap-2">
+                    <span aria-hidden className="text-primary">
+                      →
+                    </span>
+                    {step}
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="grid gap-4 md:grid-cols-3">
+        {PILLARS.map((p) => (
+          <div key={p.title} className="flex flex-col gap-2 rounded-xl border border-border p-5">
+            <p.icon className="size-5 text-primary" />
+            <h3 className="font-semibold">{p.title}</h3>
+            <p className="text-sm text-muted-foreground">{p.text}</p>
+          </div>
+        ))}
+      </section>
     </div>
   );
 }

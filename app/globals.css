@@ -128,3 +128,40 @@
     @apply font-sans;
   }
 }
+/* Ledgerly theme: white background, slate text, teal primary, light-grey panels. */
+:root {
+  --foreground: #1f2933;
+  --card-foreground: #1f2933;
+  --popover-foreground: #1f2933;
+  --primary: #0f766e;
+  --primary-foreground: #ffffff;
+  --secondary: #f3f4f6;
+  --secondary-foreground: #1f2933;
+  --muted: #f3f4f6;
+  --muted-foreground: #5b6672;
+  --accent: #f3f4f6;
+  --accent-foreground: #1f2933;
+  --border: #e5e7eb;
+  --input: #d1d5db;
+  --ring: #0f766e;
+}
+
+/* Inline highlights in the draft text: one underline colour per issue status. */
+.hl {
+  cursor: pointer;
+  border-radius: 3px;
+  padding: 1px 0;
+  text-decoration-line: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  transition: background-color 0.15s;
+}
+.hl-supported { text-decoration-color: #16a34a; background: #f0fdf4; }
+.hl-unsupported { text-decoration-color: #dc2626; background: #fef2f2; }
+.hl-outdated { text-decoration-color: #d97706; background: #fffbeb; }
+.hl-conflicting { text-decoration-color: #ea580c; background: #fff7ed; }
+.hl-tone { text-decoration-color: #9333ea; background: #faf5ff; }
+.hl-term { text-decoration-color: #dc2626; background: #fef2f2; }
+.hl-other { text-decoration-color: #2563eb; background: #eff6ff; }
+.hl-done { text-decoration-color: #9ca3af; background: transparent; text-decoration-style: dotted; }
+.hl-active { outline: 2px solid #0f766e; outline-offset: 1px; }
